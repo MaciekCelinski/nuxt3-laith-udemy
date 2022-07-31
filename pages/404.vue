@@ -1,3 +1,24 @@
 <template>
-  <h1>404 - Page not Found</h1>
+  <div>
+    <div class="container">
+      <NuxtLayout name="error">
+        <template #header>
+          <h1>Page not found</h1>
+        </template>
+        <template #footer>
+          <NuxtLink to="/">Go Back</NuxtLink>
+        </template>
+      </NuxtLayout>
+    </div>
+  </div>
 </template>
+<style scoped>
+.container {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.img {
+  width: 10rem;
+}
+</style>
