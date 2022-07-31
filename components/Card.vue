@@ -23,7 +23,7 @@ const props = defineProps<CardProps>();
 .card {
   box-shadow: 1px 1px 5px black;
   background: white;
-  width: 30%;
+  width: 40%;
   margin-bottom: 30px;
   border-radius: 5px;
   overflow: hidden;

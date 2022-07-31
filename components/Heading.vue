@@ -47,7 +47,7 @@ h2 {
   line-height: 30px;
 }
 .container {
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
   padding: 50px 0;
 }
