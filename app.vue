@@ -33,12 +33,11 @@ const bgImg = ref('')
 
 // const {data: city, error} = useFetch('https://api.openweathermap.org/data/2.5/weather?q=Warsaw&appid=9fafc3710a5d524a7d325add0311688f&units=metric')
 // const { data: city, error } = useFetch( () => `https://api.openweathermap.org/data/2.5/weather?q=${location.value}&appid=9fafc3710a5d524a7d325add0311688f`)
-const { data: city, error } = useAsyncData('city', async () => {
+const { data: city, refresh, error } = useAsyncData('city', async () => {
 
   const response = await $fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location.value}&units=metric&appid=9fafc3710a5d524a7d325add0311688f`)
 
   const temp = response['main'].temp;
-  console.log('temp: ', temp)
 
   if (temp <= -10) {
     bgImg.value =
@@ -55,11 +54,16 @@ const { data: city, error } = useAsyncData('city', async () => {
   }
 
   return response
+}, {
+  watch: [location]
 })
 
 const celciusTemp = () => `${Math.floor(city.value['main'].temp)}°C`
 const currentDate = () => new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
-const setLocation = () => location.value = cityInput.value
+const setLocation = () => {
+  location.value = cityInput.value
+  // refresh()
+}
 
 </script>
 
